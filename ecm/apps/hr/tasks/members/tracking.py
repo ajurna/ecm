@@ -141,7 +141,7 @@ def parseOneMember(member, my_corp):
         mem = Member.objects.get(characterID=member.characterID)
         mem.corp = my_corp
         mem.nickname   = member.title
-        mem.baseID     = member.baseID
+        mem.baseID     = member.baseID.encode('ascii', 'replace')
         mem.corpDate   = timezone.make_aware(member.startDateTime, timezone.utc)
         mem.lastLogin  = timezone.make_aware(member.logonDateTime, timezone.utc)
         mem.lastLogoff = timezone.make_aware(member.logoffDateTime, timezone.utc)
